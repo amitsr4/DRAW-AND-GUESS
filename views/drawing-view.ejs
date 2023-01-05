@@ -1,0 +1,66 @@
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navigate.ejs') %>
+
+            <div class="site-title"></div>
+            <h1>Please draw your selected word: </h1>
+            <p><%=word%></p>
+            <style>
+                .word {
+                  font-family: 'Montserrat', sans-serif;
+                  font-size: 24px;
+                  color: #0000ff;
+                  font-weight: bold;
+                  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                  text-transform: uppercase;
+                }
+              </style>      
+               
+            <canvas id="canvas"></canvas>
+
+                    <script>
+                        const canvas = document.getElementById('canvas');
+                        const ctx = canvas.getContext('2d');
+                        ctx.font = "20px Comic Sans MS";
+                        ctx.textAlign = "center";
+                        ctx.fillStyle = "red";
+
+                        // Set up canvas
+                        ctx.lineWidth = 4;
+                        ctx.lineCap = 'round';
+
+                        // Set up mouse event listeners
+                        let isDrawing = false;
+                        let lastX = 0;
+                        let lastY = 0;
+
+                        function draw(e) {
+                            if (!isDrawing) return;
+                            ctx.beginPath();
+                            ctx.moveTo(lastX, lastY);
+                            ctx.lineTo(e.offsetX, e.offsetY);
+                            ctx.stroke();
+                            [lastX, lastY] = [e.offsetX, e.offsetY];
+                        }
+
+                        canvas.addEventListener('mousemove', draw);
+                        canvas.addEventListener('mousedown', (e) => {
+                            isDrawing = true;
+                            [lastX, lastY] = [e.offsetX, e.offsetY];
+                        });
+                        canvas.addEventListener('mouseup', () => (isDrawing = false));
+                        canvas.addEventListener('mouseout', () => (isDrawing = false));
+
+                    </script>
+                    <label for="answer-input">Enter your name:</label><input type="text" id="answer-input" required />
+                    <button>Submmit</button>
+                    </div>
+                    <p></p>
+
+                    <%- include('./partials/footer.ejs') %>
+
+    </body>
+
+</html>

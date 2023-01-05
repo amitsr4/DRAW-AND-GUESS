@@ -1,22 +1,27 @@
 <html lang="en">
-<%- include("./header.ejs") %>
+  <%- include('./partials/header.ejs') %>
 
 <body>
+  <%- include('./partials/navigate.ejs') %>
+  <div class="site-title"></div>
+  <h1>Welcome to Draw&Guess</h2>
 
-  <div class="blogs content">
-    <h2>All Blogs</h2>
 
-    <% if (blogs.length > 0) { %>
-      <% blogs.forEach(blog => { %>
-        <h3 class="title"><%= blog.title %></h3>
-        <p class="snippet"><%= blog.snippet %></p>
-      <% }) %>
-    <% } else { %>
-      <p>There are no blogs to display...</p>
-    <% } %>
-    
-  </div>
+      <p></p>
+      <label for="name-input">Enter your name:</label><input type="text" id="name-input" required />
+      <p>
+          <a href="/word-choosing-view.ejs">
+            <button>Click me</button>
+          </a>
+        </div>
 
-  <%- include("./partials/footer.ejs") %>
+      <div class="about content">
+        <h2>About Us</h2>
+
+      </div>
+
+      <%- include('./partials/footer.ejs') %>
+
 </body>
-</html>`
+
+</html>

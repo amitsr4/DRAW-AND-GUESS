@@ -1,0 +1,81 @@
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+    <body>
+        <%- include('./partials/navigate.ejs') %>
+
+            <div class="site-title"></div>
+            <h1>Choose word's level</h2>
+
+                <form id="word-level" action="/drawing-view" method="POST">
+                    <input type="hidden" name="word" value="">
+                    <button type="button" id="easy-word">Easy word</button>
+                    <button type="button" id="medium-word">Medium word</button>
+                    <button type="button" id="hard-word">Hard word</button>
+
+
+                    </div>
+
+                    <script>
+                        const easyWords = [
+                            "ball",
+                            "boy",
+                            "sun",
+                            "tree"
+                        ];
+                        const mediumWords = [
+                            "apple",
+                            "orange",
+                            "grape",
+                            "snake"
+                        ];
+                        const hardWords = [
+                            "banana",
+                            "strawberry",
+                            "football",
+                            "rabbit"
+
+                        ];
+
+                        const form1 = document.getElementById('word-level');
+                        const button1 = document.getElementById('hard-word');
+                        const button2 = document.getElementById('medium-word');
+                        const button3 = document.getElementById('easy-word');
+                        button1.addEventListener('click', function () {
+                            const word = getWord('hard'); // call your function to get the word
+                            form1.elements.word.value = word; // update the hidden input field's value
+                            form1.submit(); // submit the form
+                        });
+                        button2.addEventListener('click', function () {
+                            const word = getWord('medium'); // call your function to get the word
+                            form1.elements.word.value = word; // update the hidden input field's value
+                            form1.submit(); // submit the form
+                        });
+                        button3.addEventListener('click', function () {
+                            const word = getWord('easy'); // call your function to get the word
+                            form1.elements.word.value = word; // update the hidden input field's value
+                            form1.submit(); // submit the form
+                        });
+                        function getWord(level) {
+                            let word;
+                            if (level === 'hard') {
+                                const index = Math.floor(Math.random() * hardWords.length);
+                                word = hardWords[index];
+                            }
+                            if (level === 'medium') {
+                                const index = Math.floor(Math.random() * mediumWords.length);
+                                word = mediumWords[index];
+                            }
+                            if (level === 'easy') {
+                                const index = Math.floor(Math.random() * easyWords.length);
+                                word = easyWords[index];
+                            }
+                            return word;
+                        }
+                    </script>
+
+                    <%- include('./partials/footer.ejs') %>
+
+    </body>
+
+</html>
