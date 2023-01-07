@@ -46,6 +46,9 @@ app.post('/word-choosing-view',(req,res)=>{
     } 
    
 });
+app.get('/instructions', (req,res)=>{
+    res.render('instructions', {title: 'Instruction'});
+});
 
 app.get('/word-choosing-view.ejs', (req,res)=>{
     res.render('word-choosing-view', {title: 'Home'});

@@ -1,0 +1,49 @@
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+
+</head>
+<%- include('./partials/header.ejs') %>
+
+  <body>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <%- include('./partials/navigate.ejs') %>
+      <div class="site-title"></div>
+      <h1> Instructions</h1>
+      <label style="color: blueviolet; font-size: 30px ;" >
+        ‘Draw & Guess’ game for 2 players-
+      </label>
+
+    <h3 style="font-size: larger;">
+        The first player starts the game by choosing between 3 given words, words vocabulary is provided below:
+        - Easy: 3-4 letters.
+        - Medium: 5 letters
+        - Hard: 6 or more letters.
+<br>
+        Then he will try to draw the word’s meaning.
+        When clicking send, the second player will see the drawing and will try to guess the word. Once succeed, he will
+        get to pick a new word, draw it, and so on.
+        <br>
+    </h3>
+    <br><br><br>
+      <h2>
+        Unfortunately I have not finish the game yet.. I will finish it very soon!
+        
+      </h2>
+
+      <br><br>
+
+
+
+      <a href="../">
+        <button>Go back</button>
+      </a>
+
+      <%- include('./partials/footer.ejs') %>
+
+  </body>
+
+</html>

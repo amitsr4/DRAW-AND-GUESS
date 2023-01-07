@@ -5,23 +5,32 @@
 
     <%- include('./partials/navigate.ejs') %>
       <div class="site-title"></div>
-      <h1>Guess the word by the following draw</h2>
-
+      <h1>Guess the word by the following draw </h2>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        //TODO : Put the canvas pic here.
 
         <form id="guess-the-draw" action="/guessing-view" method="GET">
-          <label for="guess-input">Enter your guess:</label><input type="text" id="guess-input" name='guess' required />
+          
+          <h2 for="guess-input">Enter your guess:</h2><input type="text" id="guess-input" name='guess' required  />
           <button type="submit" id="submit-guess" name="button">Submit</button>
 
         </form>
         <div id="response"></div>
 
         <script>
+          //TODO: IN PROCESS!
           let answer;
           document.getElementById('submit-guess').addEventListener('click', function () {
             const xhr = new XMLHttpRequest();
             xhr.onload = function () {
               document.getElementById('response').innerHTML = this.responseText;
-              answer =  this.responseText;
+              answer = this.responseText;
               console.log(answer);
             };
             xhr.open('GET', '/submit-guess');

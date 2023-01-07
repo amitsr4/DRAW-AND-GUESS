@@ -1,15 +1,15 @@
 <html lang="en">
 <%- include('./partials/header.ejs') %>
-<button id="clear-button">Clear</button>
+    <button id="clear-button"
+    style="position: relative; height: fit-content;";>Clear</button>
 
     <body>
         <%- include('./partials/navigate.ejs') %>
 
             <div class="site-title"></div>
-            <h7> <%=currWord%>
+            <h7>
+                <%=currWord%>
             </h7>
-            <p> </p>
-
             <canvas id="canvas" style="border: 2px solid black" width="700" height="500"></canvas>
 
             <script>
@@ -49,21 +49,41 @@
 
 
                 clearButton.addEventListener('click', () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        });
-            </script>    
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    canvas.addEventListener('touchstart', function (event) {
+                        isDrawing = true;
+                        context.moveTo(event.touches[0].clientX, event.touches[0].clientY);
+                    });
+
+                    canvas.addEventListener('touchmove', function (event) {
+                        if (isDrawing) {
+                            context.lineTo(event.touches[0].clientX, event.touches[0].clientY);
+                            context.stroke();
+                        }
+                    });
+
+                    canvas.addEventListener('touchend', function () {
+                        isDrawing = false;
+                    });
+
+                    canvas.addEventListener('touchcancel', function () {
+                        isDrawing = false;
+                    });
+                });
+            </script>
 
             <form id="form">
-                <label for="message">Enter you guess:</label><br>
+                <h2 for="message">Enter you guess:</h2><br>
                 <input type="text" id="message" name="message"><br>
+                <br>
                 <button type="submit">Submit</button>
-              </form>
+            </form>
             </div>
             <script>
                 const message = document.getElementById('message').value;
 
             </script>
-
 
             <%- include('./partials/footer.ejs') %>
 

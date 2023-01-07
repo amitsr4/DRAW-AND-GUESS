@@ -1,18 +1,15 @@
 <html lang="en">
 <%- include('./partials/header.ejs') %>
 
-    <!-- <div class="container"> -->
-
     <body>
-        <!-- <div class="inner-container"></div> -->
         <%- include('./partials/navigate.ejs') %>
 
             <div class="site-title"></div>
             <h1>Choose level:</h2>
-                <a> <%=role%> </a>
-                <a> <%=name%> </a>
-
-
+                <a>Player name:<%=name%> </a><br>
+                <br>
+                <a>Player role:<%=role%> </a>
+                        <br></br>
                 <form id="word-level" action="/drawing-view" method="POST">
                     <input type="hidden" name="word" value="">
                     <button type="button" id="easy-word">Easy word</button>
@@ -76,7 +73,6 @@
                             }
                             return word;
                         }
-
                     </script>
 
                     <%- include('./partials/footer.ejs') %>
