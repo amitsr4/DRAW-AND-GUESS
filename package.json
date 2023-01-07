@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "server": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/amitsr4/DRAW-AND-GUESS#readme",
   "description": "",
   "devDependencies": {
+    "marked": "^4.2.5",
     "nodemon": "^2.0.20"
   }
 }

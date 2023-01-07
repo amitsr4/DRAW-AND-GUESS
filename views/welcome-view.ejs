@@ -8,13 +8,12 @@
       <div class="site-title"></div>
       <h8> Draw & Guess</h8>
 
-      <label id="enter-name" for="name-input">Enter your name:</label><input type="text" id="name-input" required />
       <label id="choose-player-label" for="choose-player" style="visibility: hidden;">Choose a role:</label>
 
       <button type="button" id="StartButton" onClick="StartGame()">START PLAY</button>
 
       <form id="choose-player-form" action="/word-choosing-view" method="POST">
-        <!-- <button type="submit" name="button-id" value="button-1">Button 1</button> -->
+        <label id="enter-name" for="name-input">Enter your name:</label><input type="text" name="name" id="name-input" required />
 
         <button type="submit" name="button" id="Drawer" value ="Drawer" style="visibility: hidden;">Drawer</button>
         <button type="submit" name = "button" id="Guesser" value ="Guesser" style="visibility: hidden; left: 500px;">Guesser</button>
@@ -37,17 +36,7 @@
         }
 
       </script>
-
-      // <!-- <form id="player" action="/players" style="justify-content:space-around"; method="POST">
-      //   <input type="hidden" name="playerID" value="">
-      //   <button type="button" id="Drawer" style="display: none";>Drawer</button> <button type="button" id="Guesser" style="display: none; ">Guesser</button>
-      //   </div> -->
-
-
-
-      <!-- <a href="/word-choosing-view.ejs">
-          <button>Start play</button> </a> -->
-
+\
 
       <style>
         label {

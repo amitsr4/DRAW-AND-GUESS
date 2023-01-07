@@ -1,23 +1,37 @@
 <html lang="en">
-  <%- include('./partials/header.ejs') %>
+<%- include('./partials/header.ejs') %>
 
-<body>
-  
-  <%- include('./partials/navigate.ejs') %>
-  <div class="site-title"></div>
-  <h1>Guess the word by the following draw</h2>
+  <body>
+
+    <%- include('./partials/navigate.ejs') %>
+      <div class="site-title"></div>
+      <h1>Guess the word by the following draw</h2>
 
 
-      <p></p>
-      <label for="guess-input">Enter your guess:</label><input type="text" id="guess-input" required />
-      <p>
-          <a href="/word-choosing-view.ejs">
-            <button>Click me</button>
-          </a>
-        </div>
+        <form id="guess-the-draw" action="/guessing-view" method="GET">
+          <label for="guess-input">Enter your guess:</label><input type="text" id="guess-input" name='guess' required />
+          <button type="submit" id="submit-guess" name="button">Submit</button>
 
-      <%- include('./partials/footer.ejs') %>
+        </form>
+        <div id="response"></div>
 
-</body>
+        <script>
+          let answer;
+          document.getElementById('submit-guess').addEventListener('click', function () {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+              document.getElementById('response').innerHTML = this.responseText;
+              answer =  this.responseText;
+              console.log(answer);
+            };
+            xhr.open('GET', '/submit-guess');
+            xhr.send();
+          });
+          alert(answer);
+        </script>
+
+        <%- include('./partials/footer.ejs') %>
+
+  </body>
 
 </html>

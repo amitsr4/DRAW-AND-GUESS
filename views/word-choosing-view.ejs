@@ -9,14 +9,16 @@
 
             <div class="site-title"></div>
             <h1>Choose level:</h2>
-                <a> <%=id%> </a>
+                <a> <%=role%> </a>
+                <a> <%=name%> </a>
+
 
                 <form id="word-level" action="/drawing-view" method="POST">
                     <input type="hidden" name="word" value="">
                     <button type="button" id="easy-word">Easy word</button>
                     <button type="button" id="medium-word">Medium word</button>
                     <button type="button" id="hard-word">Hard word</button>
-                </form> //TODO just added
+                </form> 
 
                     <script>
                         const easyWords = [
