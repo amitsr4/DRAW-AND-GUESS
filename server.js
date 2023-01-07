@@ -69,23 +69,6 @@ app.post('/drawing-view',(req,res)=>{
 });
 
 
-// app.post('/drawing-view',(req,res)=>{
-//     const word =req.body.word;
-//     res.render('drawing-view', {title: 'Drawing', word})
-// });
-
-// app.post('/drawing-view', (req,res)=>{
-//     const draw = new Draw(req.body);
-
-//     draw.save().then((result) =>{
-//         res.redirect('/waiting-view')
-//     })
-//     .cath((err)=>{ 
-//         console.log(err);
-//     })
-// });
-
-
 app.listen(PORT, () => {
     console.log(`Server started, listening on port: http://localhost:${PORT}`)
 });
