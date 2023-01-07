@@ -1,39 +1,41 @@
 <html lang="en">
 <%- include('./partials/header.ejs') %>
 
+    <!-- <div class="container"> -->
+
     <body>
+        <!-- <div class="inner-container"></div> -->
         <%- include('./partials/navigate.ejs') %>
 
             <div class="site-title"></div>
-            <h1>Choose word's level</h2>
+            <h1>Choose level:</h2>
+                <a> <%=id%> </a>
 
                 <form id="word-level" action="/drawing-view" method="POST">
                     <input type="hidden" name="word" value="">
                     <button type="button" id="easy-word">Easy word</button>
                     <button type="button" id="medium-word">Medium word</button>
                     <button type="button" id="hard-word">Hard word</button>
-
-
-                    </div>
+                </form> //TODO just added
 
                     <script>
                         const easyWords = [
-                            "ball",
-                            "boy",
-                            "sun",
-                            "tree"
+                            "Ball",
+                            "Boy",
+                            "Sun",
+                            "Tree"
                         ];
                         const mediumWords = [
-                            "apple",
-                            "orange",
-                            "grape",
-                            "snake"
+                            "Apple",
+                            "Orange",
+                            "Grape",
+                            "Snake"
                         ];
                         const hardWords = [
-                            "banana",
-                            "strawberry",
-                            "football",
-                            "rabbit"
+                            "Banana",
+                            "Strawberry",
+                            "Football",
+                            "Rabbit"
 
                         ];
 
@@ -72,6 +74,7 @@
                             }
                             return word;
                         }
+
                     </script>
 
                     <%- include('./partials/footer.ejs') %>

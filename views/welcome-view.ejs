@@ -1,27 +1,81 @@
 <html lang="en">
-  <%- include('./partials/header.ejs') %>
+<%- include('./partials/header.ejs') %>
 
-<body>
-  <%- include('./partials/navigate.ejs') %>
-  <div class="site-title"></div>
-  <h1>Welcome to Draw&Guess</h2>
+  <body>
+    <link rel="stylesheet" href="/styles.css">
+
+    <%- include('./partials/navigate.ejs') %>
+      <div class="site-title"></div>
+      <h8> Draw & Guess</h8>
+
+      <label id="enter-name" for="name-input">Enter your name:</label><input type="text" id="name-input" required />
+      <label id="choose-player-label" for="choose-player" style="visibility: hidden;">Choose a role:</label>
+
+      <button type="button" id="StartButton" onClick="StartGame()">START PLAY</button>
+
+      <form id="choose-player-form" action="/word-choosing-view" method="POST">
+        <!-- <button type="submit" name="button-id" value="button-1">Button 1</button> -->
+
+        <button type="submit" name="button" id="Drawer" value ="Drawer" style="visibility: hidden;">Drawer</button>
+        <button type="submit" name = "button" id="Guesser" value ="Guesser" style="visibility: hidden; left: 500px;">Guesser</button>
+      </form>
+
+      <script>
+        function StartGame() {
+          document.getElementById('StartButton').style.visibility = "hidden";
+          document.getElementById('Drawer').style.visibility="visible";
+          document.getElementById('Guesser').style.visibility="visible";
+          document.getElementById('choose-player-label').style.visibility = "visible";
+
+          document.getElementById('enter-name').style.visibility = "hidden";
+          document.getElementById('name-input').style.visibility = "hidden";
+          document.getElementById('choose-player-form').style.visibility = "visible";
+        }
+
+        function Drawer() {
+
+        }
+
+      </script>
+
+      // <!-- <form id="player" action="/players" style="justify-content:space-around"; method="POST">
+      //   <input type="hidden" name="playerID" value="">
+      //   <button type="button" id="Drawer" style="display: none";>Drawer</button> <button type="button" id="Guesser" style="display: none; ">Guesser</button>
+      //   </div> -->
 
 
-      <p></p>
-      <label for="name-input">Enter your name:</label><input type="text" id="name-input" required />
-      <p>
-          <a href="/word-choosing-view.ejs">
-            <button>Click me</button>
-          </a>
-        </div>
 
-      <div class="about content">
-        <h2>About Us</h2>
+      <!-- <a href="/word-choosing-view.ejs">
+          <button>Start play</button> </a> -->
 
+
+      <style>
+        label {
+          position: absolute;
+          top: 450px;
+          left: 550px;
+          text-align: center;
+          color: brown;
+          font-size: larger
+        }
+
+        input {
+          position: absolute;
+          top: 450px;
+          left: 700px;
+          text-align: center;
+        }
+
+        button {
+          position: absolute;
+          top: 500px;
+          left: 660px;
+        }
+      </style>
       </div>
 
       <%- include('./partials/footer.ejs') %>
 
-</body>
+  </body>
 
 </html>
