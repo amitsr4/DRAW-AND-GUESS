@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.render('welcome-view', { title: 'Home', name: '' });
 });
 app.get('/waiting-view', (req, res) => {
-    res.render('waiting-view', { title: 'Waiting' });
+    res.render('waiting-view', { title: 'Waiting',name,response });
 });
 
 app.post('/waiting-view', (req, res) => {
@@ -36,10 +36,10 @@ app.post('/waiting-view', (req, res) => {
     draw = req.body.imgBase64;
     currWord = req.body.word;
     if (role == currGuesser) {
-        res.render('guessing-view', { title: 'Waiting', draw, name });
+        res.render('guessing-view', { title: 'Waiting', draw, name,response });
     }
     else {
-        res.render('waiting-view', { title: 'Waiting', name });
+        res.render('waiting-view', { title: 'Waiting', name,response});
     }
 });
 

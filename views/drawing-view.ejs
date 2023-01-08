@@ -1,10 +1,11 @@
 <html lang="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('./partials/header.ejs') %>
+    <%- include('./partials/navigate.ejs') %>
 
     <body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <%- include('./partials/navigate.ejs') %>
 
             <div class="site-title"></div>
             <h7>
@@ -17,7 +18,7 @@
                 <input type="hidden" name="name" value=<%=name%>>
                 <input type="hidden" name="role" value=<%=role%>>
 
-                <canvas id="canvas" style="border: 2px solid black" width="680" height="500"></canvas>
+                <canvas id="canvas" style="border: 2px solid black" width="500" height="550"></canvas>
                 <br>
                 <button type="submit"> <strong>Submit draw</strong></button>
             </form>
@@ -32,13 +33,23 @@
                 var dataURL = canvas.toDataURL();
                 document.getElementById("imgBase64").value = dataURL; // for sending to the server.
                 const ctx = canvas.getContext('2d');
-                ctx.font = "20px Comic Sans MS";
+                // ctx.font = "20px Comic Sans MS";
                 ctx.textAlign = "center";
                 ctx.fillStyle = "red";
-
                 // Set up canvas
-                ctx.lineWidth = 4;
-                ctx.lineCap = 'round';
+                // ctx.lineWidth = 3;
+                // ctx.lineCap = 'round';  
+                window.addEventListener('resize', resizeCanvas, false);
+          window.addEventListener('orientationchange', resizeCanvas, false);
+          resizeCanvas();
+        
+      
+ 
+      function resizeCanvas() {
+        canvas.width = window.innerWidth * 0.40;
+        canvas.height = window.innerHeight * 0.50;
+        
+      }
 
                 // Set up mouse event listeners
                 let isDrawing = false;
@@ -69,14 +80,15 @@
 
 
                     canvas.addEventListener('touchstart', function (event) {
+                        if (event.target === canvas){
                         isDrawing = true;
                         ctx.moveTo(event.touches[0].clientX, event.touches[0].clientY);
                         event.preventDefault();
-                    },{ passive: true });
+                    }},{ passive: true });
 
 
                     canvas.addEventListener('touchmove', function (event) {
-                        if (isDrawing) {
+                        if (event.target === canvas && isDrawing) {  
                             ctx.lineTo(event.touches[0].clientX, event.touches[0].clientY);
                             ctx.stroke();
                             event.preventDefault();
@@ -85,20 +97,21 @@
                     },{ passive: true });
 
                     canvas.addEventListener('touchend', function () {
+                        if (event.target === canvas) {
                         isDrawing = false;
                         event.preventDefault();
+                        }
                     });
 
                     canvas.addEventListener('touchcancel', function () {
+                        if (event.target === canvas) {
                         isDrawing = false;
                         event.preventDefault();
+                        }
                     });
             </script>
 
-
             </div>
-
-
 
     </body>
 
