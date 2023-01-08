@@ -1,21 +1,33 @@
 <html lang="en">
-<%- include('./partials/header.ejs') %>
-    <button id="clear-button"
-    style="position: relative; height: fit-content;";>Clear</button>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <body>
+        <%- include('./partials/header.ejs') %>
+
         <%- include('./partials/navigate.ejs') %>
 
             <div class="site-title"></div>
             <h7>
                 <%=currWord%>
             </h7>
-            <canvas id="canvas" style="border: 2px solid black" width="700" height="500"></canvas>
+            <br>
+
+            <form id="drawing" action="/waiting-view" method="POST">
+                <input type="hidden" name="imgBase64" id="imgBase64"> 
+                <canvas id="canvas" style="border: 2px solid black" width="680" height="500"></canvas>
+                <br>
+                <button type="submit"> <strong>Submit draw</strong></button>
+            </form>
+
+            <button id="clear-button"  style="left: 80px" onclick="clear()"> Clear</button> <br>    
+
+            <%- include('./partials/footer.ejs') %>
 
             <script>
                 const clearButton = document.getElementById('clear-button');
-
                 const canvas = document.getElementById('canvas');
+                var dataURL = canvas.toDataURL();
+                document.getElementById("imgBase64").value = dataURL; // for sending to the server.
                 const ctx = canvas.getContext('2d');
                 ctx.font = "20px Comic Sans MS";
                 ctx.textAlign = "center";
@@ -50,18 +62,21 @@
 
                 clearButton.addEventListener('click', () => {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
+                });
+
 
                     canvas.addEventListener('touchstart', function (event) {
                         isDrawing = true;
-                        context.moveTo(event.touches[0].clientX, event.touches[0].clientY);
-                    });
+                        ctx.moveTo(event.touches[0].clientX, event.touches[0].clientY);
+                    },{ passive: true });
+
 
                     canvas.addEventListener('touchmove', function (event) {
                         if (isDrawing) {
-                            context.lineTo(event.touches[0].clientX, event.touches[0].clientY);
-                            context.stroke();
+                            ctx.lineTo(event.touches[0].clientX, event.touches[0].clientY);
+                            ctx.stroke();
                         }
-                    });
+                    },{ passive: true });
 
                     canvas.addEventListener('touchend', function () {
                         isDrawing = false;
@@ -70,22 +85,12 @@
                     canvas.addEventListener('touchcancel', function () {
                         isDrawing = false;
                     });
-                });
             </script>
 
-            <form id="form">
-                <h2 for="message">Enter you guess:</h2><br>
-                <input type="text" id="message" name="message"><br>
-                <br>
-                <button type="submit">Submit</button>
-            </form>
+
             </div>
-            <script>
-                const message = document.getElementById('message').value;
 
-            </script>
 
-            <%- include('./partials/footer.ejs') %>
 
     </body>
 
