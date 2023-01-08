@@ -1,26 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
   body {
-    padding: 1em;
-    margin: 10px auto;
+    padding: 3.7em;
+    margin: auto ;
     font-size: smaller;
     font-family: 'Noto Serif', serif;
     flex: content;
     max-width: 375px;
-    max-height: 400px;
+    max-height: 650px;
     background-image: url("background.png");
-    background-attachment:flex;
+    background-attachment:scroll;
     background-repeat:no-repeat ;
     background-size: cover;
     
   }
-  h6{
-    background-image: url("background.png");
-    background-attachment:fixed;
-    background-repeat:no-repeat;
-    background-size: cover;
-  }
 
+  input:invalid {
+    box-shadow: 0 0 5px 1px red;
+  }
   .word {
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
@@ -36,7 +33,6 @@
     display: block;
     max-width: 623px;
     max-height: 490px;
-
   } */
 
   h1 {
@@ -104,9 +100,12 @@
     font-size: 6em;
     text-shadow: #00afe4;
     color: rgb(163, 0, 82);
+
   }
 
   h8::before {
+    /* display: flex; */
+
     content: "Welcome to ";
     position: top;
     font-size: 45px;
@@ -161,6 +160,7 @@
 
   }
   button {
+    margin: auto;
     position: relative;
     align-self: center;
     max-width: 673px;

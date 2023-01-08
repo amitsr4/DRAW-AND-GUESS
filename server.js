@@ -57,7 +57,7 @@ app.post('/word-choosing-view', (req, res) => {
 });
 app.get('/instructions', (req, res) => {
     name = req.body['name'];
-    res.render('instructions', { title: 'Instruction', name });
+    res.render('instructions', { title: 'Instruction', name,response });
 });
 
 app.get('/word-choosing-view.ejs', (req, res) => {

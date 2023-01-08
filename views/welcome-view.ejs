@@ -13,7 +13,7 @@
   <%- include('./partials/navigate.ejs') %>
 
     <div class="site-title"></div>
-    <h8><strong> Draw & &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guess</strong></h8>
+    <h8><strong> Draw &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; & &nbsp;&nbsp;&nbsp;&nbsp;Guess</strong></h8>
 
     <form id="choose-player-form" autocomplete="off" action="/word-choosing-view" method="POST">
       <br>
@@ -21,16 +21,19 @@
       <br>
       <br>
 
-      <h3 for="enter-name"><strong>Enter your name:</strong> <input type="text" id="name-input" name='name' required />    <br>
+      <h3 for="enter-name"><strong>Enter your name:</strong> <input type="text" id="name-input" name='name' required />    
     <br>
 
         <button type="button" id="StartButton" onClick="StartGame()"><strong>START
-            PLAY</strong></button>
+            PLAY</strong></button><br>
+            <label id="choose-player-label" for="choose-player" style="visibility: hidden;">Choose a role:</label>
+             <button type="submit" name="button" id="Guesser" value="Guesser" style="visibility: hidden;">Guesser</button>
+            <button type="submit" name="button" id="Drawer" value="Drawer" style="visibility: hidden;">Drawer</button>
+
+
       </h3>
       <h3>
-        <label id="choose-player-label" for="choose-player" style="visibility: hidden;">Choose a role:</label> <br>
         <button type="submit" name="button" id="Drawer" value="Drawer" style="visibility: hidden;">Drawer</button>
-        <button type="submit" name="button" id="Guesser" value="Guesser" style="visibility: hidden;">Guesser</button>
       </h3>
 
     </form>
