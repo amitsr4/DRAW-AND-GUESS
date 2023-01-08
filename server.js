@@ -3,85 +3,88 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 
-app.set('view engine', 'ejs'); 
-
+app.set('view engine', 'ejs');
+let role = "", name = "";
 let currWord;
-let currDrawer ='free';
-let currGuesser= 'free';
+let currDrawer = 'free';
+let currGuesser = 'free';
 let avialability = 'available';
 let draw;
 
 
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 //middleware & static files
 app.use(express.static('public'));
 app.use(express.json());
 
-app.get('/', (req,res)=>{
-    if(currDrawer != 'free' && currDrawer != 'free'){
-        avialability = 'full';
-    }
-    res.render('welcome-view', {title: 'Home'});
+app.get('/', (req, res) => {
+    // if(currDrawer != 'free' && currDrawer != 'free'){   //TODO later need to check whether the role is taken or not.
+    //     avialability = 'full';
+    // }
+    res.render('welcome-view', { title: 'Home', name: '' });
 });
-app.get('/waiting-view', (req,res)=>{
-    res.render('waiting-view', {title: 'Waiting'});
+app.get('/waiting-view', (req, res) => {
+    res.render('waiting-view', { title: 'Waiting' });
 });
 
-app.post('/waiting-view',(req,res)=>{
-    if(currGuesser){
+app.post('/waiting-view', (req, res) => {
+    role = req.body['button'];
+    name = req.body['name'];
     draw = req.body.imgBase64;
     currWord = req.body.word;
-    res.render('guessing-view', {title: 'Waiting', draw});
+    if (role == currGuesser) {
+        res.render('guessing-view', { title: 'Waiting', draw, name });
     }
-    else{
-        res.render('waiting-view', {title: 'Waiting'});
+    else {
+        res.render('waiting-view', { title: 'Waiting', name });
     }
 });
 
-app.post('/word-choosing-view',(req,res)=>{
-    const role = req.body['button']
-    const name = req.body['name']
-    if(role=='Drawer'){ 
-        // if(currDrawer != 'free'){
-        //     console.log("The drawer role is taken")
-        // }else {
-            currDrawer = name;
-            res.render('word-choosing-view', {title: 'Choosing', role, name});
-        // }
-    } else{
-        // if(currGuesser != 'free'){
-        //     if(currDrawer!= 'free') console.log("Please wait until one player quit")
-        //     else console.log("The Guesser role is taken")
-        // }else {currGuesser = name;
-        res.render('guessing-view', {title: 'Guessing', role, name});
-        // }
-    } 
-   
+app.post('/word-choosing-view', (req, res) => {
+    role = req.body['button'];
+    name = req.body['name'];
+    if (role == 'Drawer') {
+        currDrawer = req.body['name'];
+        res.render('word-choosing-view', { title: 'Choosing', role, name });
+    } else {
+        currGuesser = req.body['name'];
+        res.render('guessing-view', { title: 'Guessing', role, name, draw, respond: '' });
+    }
+
 });
-app.get('/instructions', (req,res)=>{
-    res.render('instructions', {title: 'Instruction'});
+app.get('/instructions', (req, res) => {
+    name = req.body['name'];
+    res.render('instructions', { title: 'Instruction', name });
 });
 
-app.get('/word-choosing-view.ejs', (req,res)=>{
-    res.render('word-choosing-view', {title: 'Home'});
+app.get('/word-choosing-view.ejs', (req, res) => {
+    name = req.body['name'];
+    role = req.body['button'];
+
+    res.render('word-choosing-view', { title: 'Home', name,role });
 });
 
-app.get('/guessing-view',(req,res)=>{
-    console.log(currWord);
-    console.log(currDrawer +" drawer");
-    console.log(currGuesser +" guesser");
+app.get('/guessing-view', (req, res) => {
+    name = req.body['name'];
+    role = req.body['button'];
 
+    if (currWord == req.body['guess']) {
+        //TODO add scores.
+        res.render('word-choosing-view', { title: 'Home', name,role, respond: 'Your Answer is CORRECT! and now is your turn to draw' });
+    } else {
+        res.render('guessing-view', { title: 'Home', name, role, respond: 'Your Answer is wrong! Keep trying, you can do it!' });
 
-    if(currWord == req.body['guess']) res.send('Correct!')
-    else res.send('Wrong!');
-    // res.render('guessing-view', {title: 'Guessing', currWord})
+    }
+
 });
 
-app.post('/drawing-view',(req,res)=>{
+app.post('/drawing-view', (req, res) => {
     currWord = req.body.word;
-    res.render('drawing-view', {title: 'Drawing', currWord});
+    role = req.body['button'];
+    name = req.body['name'];
+    res.render('drawing-view', { title: 'Drawing', currWord, name, role });
 });
 
 app.listen(PORT, () => {

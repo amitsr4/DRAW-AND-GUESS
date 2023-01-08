@@ -1,20 +1,17 @@
 <html lang="en">
 <%- include('./partials/header.ejs') %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <body>
 
     <%- include('./partials/navigate.ejs') %>
       <div class="site-title"></div>
       <h1>Guess the word by the following draw </h2>
+        <%=respond%>
         <img src="<%= draw %>">
-
-        <br><br><br>
-        <br><br><br>
-        
-        //TODO : Put the canvas pic here.
-
-        <form id="guess-the-draw" action="/guessing-view" method="GET">
-          
+        <form id="guess-the-draw" autocomplete="off" action="/guessing-view" method="GET">
+          <input type="hidden" name="name" value=<%=name%>>
+          <input type="hidden" name="role" value=<%=role%>>
           <h2 for="guess-input">Enter your guess:</h2><input type="text" id="guess-input" name='guess' required  />
           <button type="submit" id="submit-guess" name="button">Submit</button>
 

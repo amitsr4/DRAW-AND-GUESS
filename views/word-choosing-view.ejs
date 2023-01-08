@@ -1,20 +1,24 @@
 <html lang="en">
 
-<body>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%- include('./partials/header.ejs') %>
+    <body>
 
         <%- include('./partials/navigate.ejs') %>
 
             <div class="site-title"></div>
-            <h3>Choose level:</h3>
-            <a>Your name - : <%=name%> </a><br>
+            <h1><%= respond %> </h1>
             <br>
-            <a>Your role - : <%=role%> </a>
-            <br></br>
+
+            <h3>Choose level:</h3>    <br>
+
+        
             <form id="word-level" action="/drawing-view" method="POST">
                 <input type="hidden" name="word" value="">
+                <input type="hidden" name="name" value=<%=name%>>
+                <input type="hidden" name="role" value=<%=role%>>
+
                 <button type="button" id="easy-word">Easy word</button>
                 <button type="button" id="medium-word">Medium word</button>
                 <button type="button" id="hard-word">Hard word</button>
