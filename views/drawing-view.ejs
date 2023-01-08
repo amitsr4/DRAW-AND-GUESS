@@ -71,6 +71,7 @@
                     canvas.addEventListener('touchstart', function (event) {
                         isDrawing = true;
                         ctx.moveTo(event.touches[0].clientX, event.touches[0].clientY);
+                        event.preventDefault();
                     },{ passive: true });
 
 
@@ -78,15 +79,19 @@
                         if (isDrawing) {
                             ctx.lineTo(event.touches[0].clientX, event.touches[0].clientY);
                             ctx.stroke();
+                            event.preventDefault();
+                            
                         }
                     },{ passive: true });
 
                     canvas.addEventListener('touchend', function () {
                         isDrawing = false;
+                        event.preventDefault();
                     });
 
                     canvas.addEventListener('touchcancel', function () {
                         isDrawing = false;
+                        event.preventDefault();
                     });
             </script>
 

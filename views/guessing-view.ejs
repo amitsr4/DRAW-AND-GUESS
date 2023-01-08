@@ -7,7 +7,7 @@
     <%- include('./partials/navigate.ejs') %>
       <div class="site-title"></div>
       <h1>Guess the word by the following draw </h2>
-        <%=respond%>
+        <%=response%>
         <img src="<%= draw %>">
         <form id="guess-the-draw" autocomplete="off" action="/guessing-view" method="GET">
           <input type="hidden" name="name" value=<%=name%>>

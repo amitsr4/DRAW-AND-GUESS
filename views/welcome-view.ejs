@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <%- include('./partials/header.ejs') %>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
 </head>
 
 <body>
   <link rel="stylesheet" href="/styles.css">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <%- include('./partials/navigate.ejs') %>
 
     <div class="site-title"></div>
@@ -38,9 +38,6 @@
 
       <script>
         function StartGame() {
-
-
-
           document.getElementById('StartButton').style.visibility = "hidden";
           document.getElementById('Drawer').style.visibility = "visible";
           document.getElementById('Guesser').style.visibility = "visible";
@@ -49,7 +46,6 @@
           document.getElementById('enter-name').style.visibility = "hidden";
           document.getElementById('name-input').style.visibility = "hidden";
           document.getElementById('choose-player-form').style.visibility = "visible";
-
         }
 
       </script>

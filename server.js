@@ -9,6 +9,7 @@ let currWord;
 let currDrawer = 'free';
 let currGuesser = 'free';
 let avialability = 'available';
+let response ='';
 let draw;
 
 
@@ -47,10 +48,10 @@ app.post('/word-choosing-view', (req, res) => {
     name = req.body['name'];
     if (role == 'Drawer') {
         currDrawer = req.body['name'];
-        res.render('word-choosing-view', { title: 'Choosing', role, name });
+        res.render('word-choosing-view', { title: 'Choosing', role, name, response });
     } else {
         currGuesser = req.body['name'];
-        res.render('guessing-view', { title: 'Guessing', role, name, draw, respond: '' });
+        res.render('guessing-view', { title: 'Guessing', role, name, draw, response});
     }
 
 });
@@ -63,7 +64,7 @@ app.get('/word-choosing-view.ejs', (req, res) => {
     name = req.body['name'];
     role = req.body['button'];
 
-    res.render('word-choosing-view', { title: 'Home', name,role });
+    res.render('word-choosing-view', { title: 'Home', name,role, response });
 });
 
 app.get('/guessing-view', (req, res) => {
@@ -72,9 +73,12 @@ app.get('/guessing-view', (req, res) => {
 
     if (currWord == req.body['guess']) {
         //TODO add scores.
-        res.render('word-choosing-view', { title: 'Home', name,role, respond: 'Your Answer is CORRECT! and now is your turn to draw' });
+        response = 'Your Answer is CORRECT! and now is your turn to draw';
+        res.render('word-choosing-view', { title: 'Home', name,role, response });
     } else {
-        res.render('guessing-view', { title: 'Home', name, role, respond: 'Your Answer is wrong! Keep trying, you can do it!' });
+        response = 'Your Answer is wrong! Keep trying, you can do it!';
+
+        res.render('guessing-view', { title: 'Home', name, role, response});
 
     }
 
