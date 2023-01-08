@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
   body {
-    padding: 3.7em;
+    padding: 1em;
     margin: auto ;
     font-size: smaller;
     font-family: 'Noto Serif', serif;
@@ -9,7 +9,7 @@
     max-width: 375px;
     max-height: 650px;
     background-image: url("background.png");
-    background-attachment:scroll;
+    background-attachment:fixed;
     background-repeat:no-repeat ;
     background-size: cover;
     
@@ -71,7 +71,7 @@
   
   a,
   ul {
-    margin: 10;
+    /* margin: 10; */
     padding: 0;
     width: 300px;
     max-width: 375px;
@@ -95,7 +95,7 @@
   }
 
   h8 {
-    max-width: 375px;;
+    /* max-width: 375px;; */
     flex: auto;
     font-size: 6em;
     text-shadow: #00afe4;
@@ -115,8 +115,8 @@
 
   /* navigate & footer styles */
   nav {
-    max-width: 375px;
-    max-height: 400px;
+    max-width: 475px;
+    max-height: 500px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
@@ -126,8 +126,8 @@
   }
 
   nav ul {
-    max-width: 375px;
-    max-height: 400px;
+    max-width: 475px;
+    max-height: 500px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
