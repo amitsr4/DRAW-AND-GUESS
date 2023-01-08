@@ -2,11 +2,16 @@
 > Building a ‘Draw & Guess’ game for 2 players
 
 ### About the game
-> I built this game for "Moveo" (Recruitment assignment).
-
-> Currently 07.01.2013 this game is this in process.
+>* I built this game for "Moveo" (Recruitment assignment).
 
 
+> This is my first project in HTML, CSS, and Node.js. Actually, this is the first time I've built something that requires both a backend and frontend, and also deployed it.  
+
+> It was a major challenge to teach myself all of those technologies from scratch without any guidance, especially with such a tight deadline.
+
+>I haven't finished the game yet, and I still have more to learn in order to complete it in the best way possible. Hopefully, I'll be able to do so in the next few days.
+
+>
 
 ### About the technolgy
 >* I chose to built the backend with Node JS, Express framework and EJS and a  .\
